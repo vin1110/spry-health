@@ -1,4 +1,6 @@
 <router-outlet />
-<app-header></app-header>
-<app-add-employee ngSkipHydration></app-add-employee>
-<app-employee-list></app-employee-list>
+<div [ngClass]="(selectedClient$ | async) == 'option1' ? 'bg-color-white':(selectedClient$ | async) == 'option2' ? 'bg-color-grey':(selectedClient$ | async) == 'option3' ? 'bg-color-beige':''">
+    <app-header></app-header>
+    <app-add-employee ngSkipHydration></app-add-employee>
+    <app-employee-list></app-employee-list>
+</div>

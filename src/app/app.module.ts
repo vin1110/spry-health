@@ -1,42 +1,29 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AddEmployeeComponent } from './add-employee/add-employee.component';
-import { EmployeeListComponent } from './employee-list/employee-list.component';
-import { HeaderComponent } from './header/header.component';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatSelectModule } from '@angular/material/select';
-import { MatInputModule } from '@angular/material/input';
-import { MatTableModule} from '@angular/material/table';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatNativeDateModule } from '@angular/material/core';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { EmployeeModule } from './employee/employee.module';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { RouteSerializer } from 'src/route-serializer';
+
+
 @NgModule({
   declarations: [
-    AppComponent,
-    AddEmployeeComponent,
-    EmployeeListComponent,
-    HeaderComponent
-  ],
+    AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule, 
-    ReactiveFormsModule, 
-    MatInputModule, 
-    MatSelectModule, 
-    MatDatepickerModule, 
-    MatButtonModule,
-    MatTableModule,
-    MatFormFieldModule,
-    MatNativeDateModule,
-    StoreModule.forRoot({}, {})
+    EmployeeModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
+    StoreRouterConnectingModule.forRoot({serializer:RouteSerializer}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
   providers: [],
   bootstrap: [AppComponent]

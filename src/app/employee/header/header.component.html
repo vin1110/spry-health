@@ -1,4 +1,4 @@
-<div class="header" [ngClass]="selectedClient == 'option1' ? 'bg-color-blue':selectedClient == 'option2' ? 'bg-color-green':selectedClient == 'option3' ? 'bg-color-red':''">
+<div class="header" [ngClass]="(selectedClient$ | async) == 'option1' ? 'bg-color-blue':(selectedClient$ | async) == 'option2' ? 'bg-color-green':(selectedClient$ | async) == 'option3' ? 'bg-color-red':''">
     <div class="header-content">
        <h1 class="mb-0 f-bold">Spry Health</h1> 
     </div>

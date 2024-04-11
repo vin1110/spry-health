@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EmpState } from '../store/emp.reducer';
+import { Store } from '@ngrx/store';
+import { AddEmployeeAction } from '../store/emp.actions';
 
 @Component({
   selector: 'app-add-employee',
@@ -12,7 +15,7 @@ export class AddEmployeeComponent implements OnInit {
 
   emailRegex = "^[a-zA-Z0-9.!#$%&?_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
   phoneNumberRegex = /^\+\d{2}\s\d{10}$/;
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private store: Store<EmpState>) {
     this.employeeForm = this.fb.group({
       fname: [null, [Validators.required, Validators.pattern("^[a-zA-Z]+$")]],
       lname: [null, [Validators.required, Validators.pattern("^[a-zA-Z]+$")]],
@@ -31,7 +34,7 @@ export class AddEmployeeComponent implements OnInit {
   get ef() { return this.employeeForm.controls; }
 
   submit() {
-    console.log("formValue", this.employeeForm.value);
+    this.store.dispatch(new AddEmployeeAction({ data: this.employeeForm.value }));
   }
 
   reset() {
