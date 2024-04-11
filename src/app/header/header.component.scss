@@ -1,0 +1,44 @@
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: white;
+    padding: 23px 14px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.dropdown {
+    position: absolute;
+    top: 11px;
+    right: 18px;
+}
+
+.dropdown:hover {
+    display: block;
+}
+
+
+.bg-color-blue {
+    background-color: #005cbb;
+}
+
+.bg-color-green {
+    background-color: #0cbb00;
+}
+
+.bg-color-red {
+    background-color: #ff0000;
+}
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.f-bold {
+    font-weight: bold;
+}
+
+.text-white {
+    color: white;
+}

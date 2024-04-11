@@ -1,0 +1,15 @@
+<div class="header" [ngClass]="selectedClient == 'option1' ? 'bg-color-blue':selectedClient == 'option2' ? 'bg-color-green':selectedClient == 'option3' ? 'bg-color-red':''">
+    <div class="header-content">
+       <h1 class="mb-0 f-bold">Spry Health</h1> 
+    </div>
+    <div class="dropdown">
+        <mat-form-field appearance="outline">
+            <mat-label>Select Client</mat-label>
+            <mat-select (selectionChange)="selectClient($event)">
+                <mat-option value="option1">Client A</mat-option>
+                <mat-option value="option2">Client B</mat-option>
+                <mat-option value="option3">Client C</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</div>

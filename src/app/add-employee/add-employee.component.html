@@ -1,0 +1,111 @@
+<div class="m-20">
+    <h2>Employee Information Form:</h2>
+    <form [formGroup]="employeeForm">
+        <table style="width: 100%;">
+            <tr>
+                <td> <mat-form-field appearance="outline" class="w-full">
+                        <mat-label>First Name</mat-label>
+                        <input matInput type="text" class="form-control" formControlName="fname">
+                        <mat-error *ngIf="(isSubmitted || ef['fname'].touched) && ef['fname'].invalid">
+                            <ng-container *ngIf="ef['fname'].hasError('required')">
+                                First Name is required
+                            </ng-container>
+                            <ng-container *ngIf="ef['fname'].hasError('pattern')">
+                                Enter valid first name
+                            </ng-container>
+
+                        </mat-error>
+                    </mat-form-field></td>
+                <td> <mat-form-field appearance="outline" class="w-full">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput type="text" class="form-control" formControlName="lname">
+                        <mat-error *ngIf="(isSubmitted || ef['lname'].touched) && ef['lname'].invalid">
+                            <ng-container *ngIf="ef['lname'].hasError('required')">
+                                Last Name is required
+                            </ng-container>
+                            <ng-container *ngIf="ef['lname'].hasError('pattern')">
+                                Enter valid last name
+                            </ng-container>
+
+                        </mat-error>
+                    </mat-form-field></td>
+                <td> <mat-form-field appearance="outline" class="w-full">
+                        <mat-label>Email</mat-label>
+                        <input matInput type="text" class="form-control" formControlName="email">
+                        <mat-error *ngIf="(isSubmitted || ef['email'].touched) && ef['email'].invalid">
+                            <ng-container *ngIf="ef['email'].hasError('required')">
+                                Email is required
+                            </ng-container>
+                            <ng-container *ngIf="ef['email'].hasError('pattern')">
+                                Enter valid email it allow only A-Z, a-z, 0-9, !#$%&?._-
+                            </ng-container>
+
+                        </mat-error>
+                        <mat-hint align="start">eg: test1&#64;gmail.com</mat-hint>
+                    </mat-form-field></td>
+                <td> <mat-form-field appearance="outline" class="w-full">
+                        <mat-label>Phone Number</mat-label>
+                        <input matInput type="text" class="form-control" formControlName="phoneNo">
+                        <mat-error *ngIf="(isSubmitted || ef['phoneNo'].touched) && ef['phoneNo'].invalid">
+                            <ng-container *ngIf="ef['phoneNo'].hasError('required')">
+                                Phone No is required
+                            </ng-container>
+                            <ng-container *ngIf="ef['phoneNo'].hasError('pattern')">
+                                Enter valid phone no
+                            </ng-container>
+
+                        </mat-error>
+                        <mat-hint align="start">eg: +91 9123456780</mat-hint>
+                    </mat-form-field></td>
+
+            </tr>
+            <tr>
+                <td> <mat-form-field appearance="outline" class="w-full">
+                        <mat-label>Address</mat-label>
+                        <textarea rows="1" matInput class="form-control" formControlName="address"></textarea>
+                        <mat-error *ngIf="(isSubmitted || ef['address'].touched) && ef['address'].invalid">
+                            <ng-container *ngIf="ef['address'].hasError('required')">
+                                Address is required
+                            </ng-container>
+                            <ng-container *ngIf="ef['address'].hasError('pattern')">
+                                Enter valid address
+                            </ng-container>
+
+                        </mat-error>
+                    </mat-form-field></td>
+                <td> <mat-form-field appearance="outline" class="w-full">
+                        <mat-label>Position</mat-label>
+                        <mat-select formControlName="position">
+                            <mat-option value="Manager">Manager</mat-option>
+                            <mat-option value="Developer">Developer</mat-option>
+                            <mat-option value="Designer">Designer</mat-option>
+                            <mat-option value="HR">HR</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="(isSubmitted || ef['position'].touched) && ef['position'].invalid">
+                            <ng-container *ngIf="ef['position'].hasError('required')">
+                                Position is required
+                            </ng-container>
+                        </mat-error>
+                    </mat-form-field></td>
+                <td> <mat-form-field appearance="outline" class="w-full">
+                        <mat-label>Date of Joining</mat-label>
+                        <input matInput [matDatepicker]="picker" [max]="getCurrentDate()" formControlName="doj">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-error *ngIf="(isSubmitted || ef['doj'].touched) && ef['doj'].invalid">
+                            <ng-container *ngIf="ef['doj'].hasError('required')">
+                                Date of joining is required
+                            </ng-container>
+                        </mat-error>
+                    </mat-form-field></td>
+            </tr>
+        </table>
+    </form>
+    <div class="center">
+        <button mat-flat-button color="primary" class="mr-10 mt-10" (click)="submit()">Submit</button>
+        <button mat-flat-button color="accent" class="mr-10 mt-10" (click)="reset()">Reset</button>
+
+    </div>
+
+</div>
