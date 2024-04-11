@@ -4,7 +4,7 @@ import { EmpState } from './emp.reducer';
 export class AppEmpState extends Record<EmpState>({
     empList:[],
     isError:null,
-    currentClient:null
+    currentClient:'option1'
 }){
     public setEmployeeList(empList:any):this{
         return this.set("empList",empList);

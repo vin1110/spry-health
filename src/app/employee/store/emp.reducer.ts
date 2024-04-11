@@ -12,7 +12,7 @@ export type EmpState = {
 export const initialEmpState: EmpState = {
     empList: [],
     isError: null,
-    currentClient: null
+    currentClient: 'option1'
 }
 
 @Injectable()

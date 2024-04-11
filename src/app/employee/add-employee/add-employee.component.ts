@@ -35,13 +35,10 @@ export class AddEmployeeComponent implements OnInit {
 
   submit() {
     this.store.dispatch(new AddEmployeeAction({ data: this.employeeForm.value }));
+    this.employeeForm.reset();
   }
 
   reset() {
     this.employeeForm.reset();
-  }
-
-  getCurrentDate(): Date {
-    return new Date();
   }
 }
